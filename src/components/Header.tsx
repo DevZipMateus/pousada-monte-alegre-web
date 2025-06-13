@@ -72,6 +72,12 @@ const Header = () => {
               >
                 Quartos
               </button>
+              <Link 
+                to="/acomodacoes"
+                className="text-gray-700 hover:text-primary transition-colors font-medium"
+              >
+                Acomodações
+              </Link>
               <button 
                 onClick={() => scrollToSection('servicos')}
                 className="text-gray-700 hover:text-primary transition-colors font-medium"
@@ -143,6 +149,13 @@ const Header = () => {
               >
                 Quartos
               </button>
+              <Link 
+                to="/acomodacoes"
+                className="block w-full text-left text-gray-700 hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Acomodações
+              </Link>
               <button 
                 onClick={() => scrollToSection('servicos')}
                 className="block w-full text-left text-gray-700 hover:text-primary transition-colors font-medium py-2"
