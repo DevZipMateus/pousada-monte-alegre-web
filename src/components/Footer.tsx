@@ -1,5 +1,5 @@
 
-import { Phone, Mail, MapPin, Heart } from 'lucide-react';
+import { Phone, Mail, MapPin, Heart, ExternalLink, Instagram, Facebook } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="bg-gray-900 text-white">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
             <div className="mb-6">
@@ -48,7 +48,7 @@ const Footer = () => {
                 lcrochel@gmail.com
               </a>
               <a 
-                href="https://maps.app.goo.gl/AFHiVRykBNj9iFUe7"
+                href="https://maps.app.goo.gl/eJ3MD7eqtT3HEYFRA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start text-gray-300 hover:text-primary transition-colors"
@@ -77,6 +77,42 @@ const Footer = () => {
               <li>• Limpeza diária</li>
               <li>• Atendimento 24h</li>
             </ul>
+          </div>
+
+          {/* Booking & Social Links */}
+          <div>
+            <h4 className="font-display text-lg font-bold text-white mb-6">
+              Reserve & Siga-nos
+            </h4>
+            <div className="space-y-4">
+              <a 
+                href="https://www.booking.com/hotel/br/pousada-barracao-campina-do-monte-alegre.pt-br.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-gray-300 hover:text-primary transition-colors"
+              >
+                <ExternalLink className="w-5 h-5 mr-3 text-primary" />
+                Reserve no Booking.com
+              </a>
+              <a 
+                href="https://www.facebook.com/pousadacampinadomontealegre"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-gray-300 hover:text-primary transition-colors"
+              >
+                <Facebook className="w-5 h-5 mr-3 text-primary" />
+                Facebook
+              </a>
+              <a 
+                href="https://www.instagram.com/pousadacampinadomontealegre/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-gray-300 hover:text-primary transition-colors"
+              >
+                <Instagram className="w-5 h-5 mr-3 text-primary" />
+                Instagram
+              </a>
+            </div>
           </div>
         </div>
       </div>
