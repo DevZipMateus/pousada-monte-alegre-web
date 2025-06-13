@@ -1,8 +1,24 @@
 
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { MapPin, Star, Users, Coffee, Wifi, Car, Flower } from 'lucide-react';
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const images = [
+    '/lovable-uploads/1ba8bdea-51f6-484e-a90c-08ffba8a2fd2.png',
+    '/lovable-uploads/area-externa/area-externa-05.jpg'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // Troca a cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   const scrollToAbout = () => {
     const element = document.getElementById('sobre');
     if (element) {
@@ -20,11 +36,11 @@ const Hero = () => {
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image with optimization */}
+      {/* Background image carousel with optimization */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
         style={{
-          backgroundImage: 'url(/lovable-uploads/1ba8bdea-51f6-484e-a90c-08ffba8a2fd2.png)',
+          backgroundImage: `url(${images[currentImageIndex]})`,
           willChange: 'transform' // Optimize for animations
         }}
       ></div>
