@@ -8,7 +8,7 @@ const Hero = () => {
   
   const images = [
     '/lovable-uploads/1ba8bdea-51f6-484e-a90c-08ffba8a2fd2.png',
-    '/lovable-uploads/area-externa/area-externa-05.jpg'
+    
   ];
 
   useEffect(() => {
