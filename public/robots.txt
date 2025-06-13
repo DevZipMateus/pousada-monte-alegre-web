@@ -21,4 +21,4 @@ Disallow: /api/
 Disallow: /*.json$
 Disallow: /*.xml$
 
-Sitemap: https://pousadacampina.com.br/sitemap.xml
+Sitemap: https://pousadacma.com.br/sitemap.xml
