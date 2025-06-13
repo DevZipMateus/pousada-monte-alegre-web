@@ -146,7 +146,11 @@ const Contact = () => {
                 size="lg"
                 className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
+                <img 
+                  src="/lovable-uploads/0aba352a-0b5a-4bf7-a909-66f7907e2418.png" 
+                  alt="WhatsApp" 
+                  className="w-5 h-5 mr-2" 
+                />
                 Reservar pelo WhatsApp
               </Button>
             </div>
