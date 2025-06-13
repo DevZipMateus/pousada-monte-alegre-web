@@ -19,8 +19,8 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6 text-primary" />,
       title: "Endereço",
-      content: "Rua Marcelo Vieira Ramos, 82\nCampina do Monte Alegre - SP\nCEP 18246-048",
-      action: () => window.open('https://maps.app.goo.gl/AFHiVRykBNj9iFUe7', '_blank')
+      content: "R. Marcelo Viêira Ramos, 82\nAraçatubinha, Campina do Monte Alegre - SP\nCEP 18245-000",
+      action: () => window.open('https://maps.app.goo.gl/eJ3MD7eqtT3HEYFRA', '_blank')
     },
     {
       icon: <Clock className="w-6 h-6 text-primary" />,
@@ -102,13 +102,17 @@ const Contact = () => {
           {/* Map and CTA */}
           <div className="animate-fade-in">
             <h3 className="font-display text-3xl font-bold text-gray-800 mb-8">
-              Nossa Localização
+              COMO CHEGAR - LOCALIZAÇÃO
             </h3>
+            <p className="font-body text-lg text-gray-600 mb-6 leading-relaxed">
+              <strong>Encontre a Pousada Campina do Monte Alegre com Facilidade</strong><br />
+              Estamos à 11 minutos da UFSCar Lagoa do Sino e 5 minutos do centro da cidade.
+            </p>
             
             {/* Interactive Map */}
             <div className="relative rounded-xl overflow-hidden shadow-lg mb-8 h-64 md:h-80">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.7945!2d-47.8542!3d-23.0123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDA1JzA4LjMiUyA0N8KwNTEnMTUuMSJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.796!2d-47.854!3d-23.012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c5eeda8b1f8b41%3A0x1234567890!2sR.%20Marcelo%20Vi%C3%AAira%20Ramos%2C%2082%20-%20Ara%C3%A7atubinha%2C%20Campina%20do%20Monte%20Alegre%20-%20SP%2C%2018245-000!5e0!3m2!1spt-BR!2sbr!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -119,7 +123,7 @@ const Contact = () => {
               />
               <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent"></div>
               <Button
-                onClick={() => window.open('https://maps.app.goo.gl/AFHiVRykBNj9iFUe7', '_blank')}
+                onClick={() => window.open('https://maps.app.goo.gl/eJ3MD7eqtT3HEYFRA', '_blank')}
                 className="absolute bottom-4 left-4 bg-white text-primary hover:bg-primary hover:text-white shadow-lg"
                 size="sm"
               >
