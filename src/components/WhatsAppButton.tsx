@@ -29,7 +29,12 @@ const WhatsAppButton = () => {
         className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 relative group"
         title="Fale conosco no WhatsApp"
       >
-        <MessageCircle className="w-6 h-6" />
+        {/* WhatsApp Logo */}
+        <img 
+          src="/lovable-uploads/0aba352a-0b5a-4bf7-a909-66f7907e2418.png" 
+          alt="WhatsApp" 
+          className="w-6 h-6" 
+        />
         
         {/* Pulse animation */}
         <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
