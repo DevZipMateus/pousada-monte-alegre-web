@@ -1,10 +1,9 @@
-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Heart, User, Bed, Desk, Bath, Shirt, TreePine, Cabinet } from 'lucide-react';
+import { Heart, User, Bed, Monitor, Bath, Shirt, TreePine, Archive } from 'lucide-react';
 
 const Accommodations = () => {
   const coupleRoomImages = [
@@ -25,20 +24,20 @@ const Accommodations = () => {
 
   const coupleAmenities = [
     { icon: <Bed className="w-5 h-5" />, text: "Cama de casal confortável" },
-    { icon: <Desk className="w-5 h-5" />, text: "Mesa de trabalho" },
+    { icon: <Monitor className="w-5 h-5" />, text: "Mesa de trabalho" },
     { icon: <Bath className="w-5 h-5" />, text: "Banheiro privativo" },
     { icon: <Shirt className="w-5 h-5" />, text: "Roupa de cama e toalhas" },
     { icon: <TreePine className="w-5 h-5" />, text: "Terraço com vista para o jardim" },
-    { icon: <Cabinet className="w-5 h-5" />, text: "Guarda-roupa espaçoso" }
+    { icon: <Archive className="w-5 h-5" />, text: "Guarda-roupa espaçoso" }
   ];
 
   const singleAmenities = [
     { icon: <Bed className="w-5 h-5" />, text: "Cama individual confortável" },
-    { icon: <Desk className="w-5 h-5" />, text: "Mesa de trabalho" },
+    { icon: <Monitor className="w-5 h-5" />, text: "Mesa de trabalho" },
     { icon: <Bath className="w-5 h-5" />, text: "Banheiro privativo" },
     { icon: <Shirt className="w-5 h-5" />, text: "Roupa de cama e toalhas" },
     { icon: <TreePine className="w-5 h-5" />, text: "Terraço com vista para o jardim" },
-    { icon: <Cabinet className="w-5 h-5" />, text: "Guarda-roupa espaçoso" }
+    { icon: <Archive className="w-5 h-5" />, text: "Guarda-roupa espaçoso" }
   ];
 
   return (
