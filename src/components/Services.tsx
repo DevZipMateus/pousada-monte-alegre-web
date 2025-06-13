@@ -1,4 +1,3 @@
-
 import { 
   Coffee, 
   Wifi, 
@@ -30,7 +29,7 @@ const Services = () => {
       icon: <Car className="w-12 h-12 text-primary" />,
       title: "Estacionamento",
       description: "Vagas seguras e gratuitas para todos os hóspedes",
-      features: ["Vagas cobertas", "Segurança 24h", "Sem custo adicional", "Fácil acesso"]
+      features: ["Vagas descobertas", "Segurança 24h", "Sem custo adicional", "Fácil acesso"]
     },
     {
       icon: <Flower2 className="w-12 h-12 text-primary" />,

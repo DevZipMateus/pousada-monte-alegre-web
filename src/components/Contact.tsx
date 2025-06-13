@@ -1,4 +1,3 @@
-
 import { Phone, Mail, MapPin, Clock, MessageCircle, Car, Wifi, Coffee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -25,7 +24,7 @@ const Contact = () => {
     {
       icon: <Clock className="w-6 h-6 text-primary" />,
       title: "Atendimento",
-      content: "24 horas por dia\n7 dias por semana",
+      content: "Das 8h às 22h\n7 dias por semana",
       action: null
     }
   ];

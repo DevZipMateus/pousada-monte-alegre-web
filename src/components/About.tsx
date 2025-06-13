@@ -27,7 +27,7 @@ const About = () => {
     },
     {
       icon: <Users className="w-8 h-8 text-primary" />,
-      title: "16 Quartos",
+      title: "Atendimento Caloroso",
       description: "Individual, duplo, triplo e casal com banheiro privativo"
     },
     {
@@ -106,7 +106,7 @@ const About = () => {
               <p>
                 Nosso jardim e a proximidade com a natureza criam um ambiente único, onde 
                 até mesmo nosso <strong className="text-primary">"Dog"</strong>, um gigante 
-                e dócil pastor alemão, faz parte da experiência especial que oferecemos.
+                e dócil dog alemão, faz parte da experiência especial que oferecemos.
               </p>
             </div>
           </div>
