@@ -3,6 +3,21 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Star, Users, Coffee, Wifi, Car, Flower } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToAbout = () => {
+    const element = document.getElementById('sobre');
+    if (element) {
+      const headerHeight = 100;
+      const offset = 20;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with optimization */}
@@ -86,7 +101,7 @@ const Hero = () => {
               <Button 
                 variant="outline"
                 size="lg"
-                onClick={() => document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={scrollToAbout}
                 className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-gray-800 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold backdrop-blur-sm bg-white/10"
               >
                 Conhecer a Pousada
