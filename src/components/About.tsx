@@ -1,5 +1,12 @@
 
 import { Heart, Shield, Coffee, Users, Wifi, Car, Flower2, TreePine } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const About = () => {
   const features = [
@@ -32,6 +39,25 @@ const About = () => {
       icon: <Car className="w-8 h-8 text-primary" />,
       title: "Estacionamento",
       description: "Vaga garantida para seu veículo"
+    }
+  ];
+
+  const images = [
+    {
+      src: "/lovable-uploads/area-externa/pousada.jpg",
+      alt: "Vista geral da Pousada Campina do Monte Alegre"
+    },
+    {
+      src: "/lovable-uploads/area-externa/frente.jpg",
+      alt: "Fachada da pousada"
+    },
+    {
+      src: "/lovable-uploads/area-externa/area-externa-05.jpg",
+      alt: "Área externa da pousada"
+    },
+    {
+      src: "/lovable-uploads/area-externa/mesa-externa-01.jpg",
+      alt: "Mesa externa para relaxar"
     }
   ];
 
@@ -85,25 +111,48 @@ const About = () => {
             </div>
           </div>
 
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-2 gap-6 animate-scale-in">
-            {features.map((feature, index) => (
-              <div 
-                key={index}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-natural-200"
-              >
-                <div className="mb-4">
-                  {feature.icon}
-                </div>
-                <h4 className="font-semibold text-gray-800 mb-3 text-lg">
-                  {feature.title}
-                </h4>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+          {/* Image Carousel */}
+          <div className="animate-scale-in">
+            <Carousel className="w-full max-w-md mx-auto">
+              <CarouselContent>
+                {images.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="p-1">
+                      <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                        />
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-2" />
+              <CarouselNext className="right-2" />
+            </Carousel>
           </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-scale-in mb-20">
+          {features.map((feature, index) => (
+            <div 
+              key={index}
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-natural-200"
+            >
+              <div className="mb-4">
+                {feature.icon}
+              </div>
+              <h4 className="font-semibold text-gray-800 mb-3 text-lg">
+                {feature.title}
+              </h4>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
 
         {/* Highlight Section */}
