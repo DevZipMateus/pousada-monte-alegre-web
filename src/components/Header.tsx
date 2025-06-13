@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,21 +43,23 @@ const Header = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <img 
-                src="/lovable-uploads/dd89f9af-141d-40fb-a234-d2fb17e9162a.png" 
-                alt="Pousada Campina do Monte Alegre" 
-                className="h-16 w-auto"
-              />
+              <Link to="/">
+                <img 
+                  src="/lovable-uploads/dd89f9af-141d-40fb-a234-d2fb17e9162a.png" 
+                  alt="Pousada Campina do Monte Alegre" 
+                  className="h-16 w-auto"
+                />
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <button 
-                onClick={() => scrollToSection('inicio')}
+              <Link 
+                to="/"
                 className="text-gray-700 hover:text-primary transition-colors font-medium"
               >
                 Início
-              </button>
+              </Link>
               <button 
                 onClick={() => scrollToSection('sobre')}
                 className="text-gray-700 hover:text-primary transition-colors font-medium"
@@ -75,6 +78,12 @@ const Header = () => {
               >
                 Serviços
               </button>
+              <Link 
+                to="/galeria"
+                className="text-gray-700 hover:text-primary transition-colors font-medium"
+              >
+                Galeria
+              </Link>
               <button 
                 onClick={() => scrollToSection('depoimentos')}
                 className="text-gray-700 hover:text-primary transition-colors font-medium"
@@ -115,12 +124,13 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t shadow-lg">
             <div className="px-4 py-4 space-y-4">
-              <button 
-                onClick={() => scrollToSection('inicio')}
+              <Link 
+                to="/"
                 className="block w-full text-left text-gray-700 hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Início
-              </button>
+              </Link>
               <button 
                 onClick={() => scrollToSection('sobre')}
                 className="block w-full text-left text-gray-700 hover:text-primary transition-colors font-medium py-2"
@@ -139,6 +149,13 @@ const Header = () => {
               >
                 Serviços
               </button>
+              <Link 
+                to="/galeria"
+                className="block w-full text-left text-gray-700 hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Galeria
+              </Link>
               <button 
                 onClick={() => scrollToSection('depoimentos')}
                 className="block w-full text-left text-gray-700 hover:text-primary transition-colors font-medium py-2"
