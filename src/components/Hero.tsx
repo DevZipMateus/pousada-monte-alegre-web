@@ -28,14 +28,10 @@ const Hero = () => {
         <div className="text-center max-w-4xl mx-auto">
           {/* Main Content */}
           <div className="animate-fade-in">
-            {/* Logo instead of title */}
-            <div className="mb-8 flex justify-center">
-              <img 
-                src="/lovable-uploads/dd89f9af-141d-40fb-a234-d2fb17e9162a.png" 
-                alt="Pousada Campina do Monte Alegre" 
-                className="h-32 md:h-40 lg:h-48 w-auto drop-shadow-2xl"
-              />
-            </div>
+            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+              Pousada Campina do
+              <span className="text-primary block">Monte Alegre</span>
+            </h1>
             
             <p className="font-body text-xl md:text-2xl text-white mb-4 leading-relaxed drop-shadow-md">
               Aconchegante, acolhedora
