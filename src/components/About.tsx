@@ -55,10 +55,7 @@ const About = () => {
       src: "/lovable-uploads/area-externa/area-externa-05.jpg",
       alt: "Área externa da pousada"
     },
-    {
-      src: "/lovable-uploads/area-externa/mesa-externa-01.jpg",
-      alt: "Mesa externa para relaxar"
-    }
+
   ];
 
   return (
