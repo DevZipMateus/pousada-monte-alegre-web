@@ -35,7 +35,10 @@ const Gallery = () => {
     { src: '/lovable-uploads/area-interna/area-interna-03.jpg', alt: 'Área Interna 3' },
     { src: '/lovable-uploads/area-interna/area-interna-04.jpg', alt: 'Área Interna 4' },
     { src: '/lovable-uploads/area-interna/area-interna-05.jpg', alt: 'Área Interna 5' },
-    { src: '/lovable-uploads/area-interna/banheiro-01.jpg', alt: 'Banheiro' }
+    { src: '/lovable-uploads/area-interna/banheiro-01.jpg', alt: 'Banheiro' },
+    { src: '/lovable-uploads/1fe01332-ea88-47ba-8033-cef79572a913.png', alt: 'Entrada do Quarto' },
+    { src: '/lovable-uploads/d72e5a3d-e118-465c-ac50-99cb604ea836.png', alt: 'Corredor Interno' },
+    { src: '/lovable-uploads/4a0a0f17-6cc2-4cc2-900b-5b5dcd226c99.png', alt: 'Sala de Estar' }
   ];
 
   // Imagens dos quartos
