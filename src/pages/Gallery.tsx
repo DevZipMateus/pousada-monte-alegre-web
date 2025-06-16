@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { X, ZoomIn, ZoomOut } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   // Imagens da área externa
   const areaExternaImages = [
@@ -84,6 +86,17 @@ const Gallery = () => {
     </div>
   );
 
+  const handleModalClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      setSelectedImage(null);
+      setIsZoomed(false);
+    }
+  };
+
+  const handleZoomToggle = () => {
+    setIsZoomed(!isZoomed);
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -151,24 +164,69 @@ const Gallery = () => {
         </div>
       </main>
 
-      {/* Modal para visualizar imagem ampliada */}
+      {/* Modal responsivo para visualizar imagem ampliada */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
+          onClick={handleModalClick}
         >
-          <div className="relative max-w-4xl max-h-full">
-            <img
-              src={selectedImage}
-              alt="Imagem ampliada"
-              className="max-w-full max-h-full object-contain"
-            />
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-75 transition-colors"
-            >
-              ×
-            </button>
+          <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-4 md:p-8">
+            {/* Botões de controle */}
+            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 flex gap-2">
+              <button
+                onClick={handleZoomToggle}
+                className="bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-200"
+                aria-label={isZoomed ? "Diminuir zoom" : "Aumentar zoom"}
+              >
+                {isZoomed ? <ZoomOut className="w-4 h-4 sm:w-5 sm:h-5" /> : <ZoomIn className="w-4 h-4 sm:w-5 sm:h-5" />}
+              </button>
+              <button
+                onClick={() => {
+                  setSelectedImage(null);
+                  setIsZoomed(false);
+                }}
+                className="bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-200"
+                aria-label="Fechar"
+              >
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            </div>
+
+            {/* Container da imagem */}
+            <div className={`
+              relative transition-all duration-300 ease-in-out
+              ${isZoomed 
+                ? 'w-full h-full overflow-auto' 
+                : 'max-w-[95vw] max-h-[95vh] sm:max-w-[90vw] sm:max-h-[90vh] md:max-w-[85vw] md:max-h-[85vh]'
+              }
+            `}>
+              <img
+                src={selectedImage}
+                alt="Imagem ampliada"
+                className={`
+                  transition-all duration-300 ease-in-out
+                  ${isZoomed 
+                    ? 'w-auto h-auto min-w-full min-h-full object-contain cursor-move' 
+                    : 'w-full h-full object-contain cursor-pointer'
+                  }
+                `}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (!isZoomed) handleZoomToggle();
+                }}
+                style={{
+                  maxWidth: isZoomed ? 'none' : '100%',
+                  maxHeight: isZoomed ? 'none' : '100%',
+                }}
+              />
+            </div>
+
+            {/* Indicador de toque no mobile */}
+            {!isZoomed && (
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-xs sm:text-sm bg-black bg-opacity-50 px-3 py-1 rounded-full sm:hidden">
+                Toque para ampliar
+              </div>
+            )}
           </div>
         </div>
       )}
