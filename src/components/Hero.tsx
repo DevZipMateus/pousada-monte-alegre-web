@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { MapPin, Star, Users, Coffee, Wifi, Car, Flower } from 'lucide-react';
+import { MapPin, Star, Users, Coffee, Wifi, Car, Flower, Bed } from 'lucide-react';
+
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = ['/lovable-uploads/1ba8bdea-51f6-484e-a90c-08ffba8a2fd2.png'];
@@ -62,7 +63,7 @@ const Hero = () => {
             {/* Features Grid - Optimized for mobile */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
               <div className="flex flex-col items-center p-2 sm:p-4 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg">
-                <Users className="w-6 h-6 sm:w-8 sm:h-8 text-primary mb-1 sm:mb-2" />
+                <Bed className="w-6 h-6 sm:w-8 sm:h-8 text-primary mb-1 sm:mb-2" />
                 <span className="text-xs sm:text-sm font-medium text-gray-700 text-center leading-tight">Nossos quartos</span>
               </div>
               <div className="flex flex-col items-center p-2 sm:p-4 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg">
@@ -112,4 +113,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
