@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
@@ -97,6 +98,11 @@ const Gallery = () => {
     setIsZoomed(!isZoomed);
   };
 
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+    setIsZoomed(false);
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -164,69 +170,97 @@ const Gallery = () => {
         </div>
       </main>
 
-      {/* Modal responsivo para visualizar imagem ampliada */}
+      {/* Modal completamente redesenhado para corrigir cortes */}
       {selectedImage && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
           onClick={handleModalClick}
         >
-          <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-4 md:p-8">
-            {/* Botões de controle */}
-            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 flex gap-2">
+          {/* Container principal com padding apropriado */}
+          <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12">
+            
+            {/* Botões de controle - posicionamento melhorado */}
+            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 flex gap-2">
               <button
                 onClick={handleZoomToggle}
-                className="bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-200"
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 border border-white/20"
                 aria-label={isZoomed ? "Diminuir zoom" : "Aumentar zoom"}
               >
-                {isZoomed ? <ZoomOut className="w-4 h-4 sm:w-5 sm:h-5" /> : <ZoomIn className="w-4 h-4 sm:w-5 sm:h-5" />}
+                {isZoomed ? <ZoomOut className="w-5 h-5 sm:w-6 sm:h-6" /> : <ZoomIn className="w-5 h-5 sm:w-6 sm:h-6" />}
               </button>
               <button
-                onClick={() => {
-                  setSelectedImage(null);
-                  setIsZoomed(false);
-                }}
-                className="bg-black bg-opacity-70 hover:bg-opacity-90 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-200"
+                onClick={handleCloseModal}
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-200 border border-white/20"
                 aria-label="Fechar"
               >
-                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
 
-            {/* Container da imagem */}
+            {/* Container da imagem - layout completamente redesenhado */}
             <div className={`
-              relative transition-all duration-300 ease-in-out
+              relative flex items-center justify-center transition-all duration-300 ease-in-out
               ${isZoomed 
-                ? 'w-full h-full overflow-auto' 
-                : 'max-w-[95vw] max-h-[95vh] sm:max-w-[90vw] sm:max-h-[90vh] md:max-w-[85vw] md:max-h-[85vh]'
+                ? 'w-full h-full overflow-auto cursor-grab active:cursor-grabbing' 
+                : 'w-full h-full'
               }
             `}>
-              <img
-                src={selectedImage}
-                alt="Imagem ampliada"
-                className={`
-                  transition-all duration-300 ease-in-out
-                  ${isZoomed 
-                    ? 'w-auto h-auto min-w-full min-h-full object-contain cursor-move' 
-                    : 'w-full h-full object-contain cursor-pointer'
-                  }
-                `}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (!isZoomed) handleZoomToggle();
-                }}
-                style={{
-                  maxWidth: isZoomed ? 'none' : '100%',
-                  maxHeight: isZoomed ? 'none' : '100%',
-                }}
-              />
+              {isZoomed ? (
+                // Modo zoom: imagem em tamanho natural com scroll
+                <div className="min-w-full min-h-full flex items-start justify-center p-4">
+                  <img
+                    src={selectedImage}
+                    alt="Imagem ampliada"
+                    className="block max-w-none h-auto object-none cursor-grab active:cursor-grabbing select-none"
+                    onClick={(e) => e.stopPropagation()}
+                    onDragStart={(e) => e.preventDefault()}
+                    style={{
+                      minWidth: '100%',
+                      minHeight: '100%',
+                    }}
+                  />
+                </div>
+              ) : (
+                // Modo normal: imagem ajustada à tela
+                <div className="w-full h-full flex items-center justify-center">
+                  <img
+                    src={selectedImage}
+                    alt="Imagem ampliada"
+                    className="max-w-full max-h-full object-contain cursor-pointer select-none"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleZoomToggle();
+                    }}
+                    onDragStart={(e) => e.preventDefault()}
+                    style={{
+                      maxWidth: 'calc(100vw - 8rem)',
+                      maxHeight: 'calc(100vh - 8rem)',
+                    }}
+                  />
+                </div>
+              )}
             </div>
 
-            {/* Indicador de toque no mobile */}
-            {!isZoomed && (
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-xs sm:text-sm bg-black bg-opacity-50 px-3 py-1 rounded-full sm:hidden">
-                Toque para ampliar
+            {/* Indicadores de interação */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+              {!isZoomed ? (
+                <div className="bg-black/50 backdrop-blur-sm text-white text-sm px-4 py-2 rounded-full border border-white/20 sm:hidden">
+                  Toque para ampliar
+                </div>
+              ) : (
+                <div className="bg-black/50 backdrop-blur-sm text-white text-sm px-4 py-2 rounded-full border border-white/20">
+                  <span className="hidden sm:inline">Arraste para navegar • </span>
+                  Toque para reduzir
+                </div>
+              )}
+            </div>
+
+            {/* Overlay de carregamento (opcional) */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="text-white/50 text-sm">
+                {/* Espaço reservado para indicador de carregamento se necessário */}
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
