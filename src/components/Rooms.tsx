@@ -1,4 +1,3 @@
-
 import { User, Users, Users2, Heart, Bed, Bath, Wifi, Coffee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -15,7 +14,7 @@ const Rooms = () => {
       type: "Duplo",
       icon: <Users2 className="w-8 h-8 text-primary" />,
       description: "Confortável para duas pessoas com camas separadas",
-      features: ["2 Camas de solteiro", "Banheiro privativo", "Wi-Fi", "Espaço amplo"],
+      features: ["2 Camas de solteiro", "Banheiro privativo", "Wi-Fi", "Mesa de trabalho"],
       ideal: "Perfeito para amigos ou colegas"
     },
     {
@@ -29,7 +28,7 @@ const Rooms = () => {
       type: "Casal",
       icon: <Heart className="w-8 h-8 text-primary" />,
       description: "Romântico e aconchegante para casais",
-      features: ["1 Cama de casal", "Banheiro privativo", "Wi-Fi", "Ambiente íntimo"],
+      features: ["1 Cama de casal", "Banheiro privativo", "Wi-Fi", "Mesa de trabalho"],
       ideal: "Perfeito para casais"
     }
   ];
