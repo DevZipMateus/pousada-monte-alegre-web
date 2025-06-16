@@ -54,7 +54,15 @@ const Gallery = () => {
     { src: '/lovable-uploads/quartos/quarto-solteiro-05.jpg', alt: 'Quarto Solteiro 5' },
     { src: '/lovable-uploads/quartos/quarto-solteiro-06.jpg', alt: 'Quarto Solteiro 6' },
     { src: '/lovable-uploads/quartos/quartocasal.jpg', alt: 'Quarto Casal' },
-    { src: '/lovable-uploads/quartos/quartosolteiro.jpg', alt: 'Quarto Solteiro' }
+    { src: '/lovable-uploads/quartos/quartosolteiro.jpg', alt: 'Quarto Solteiro' },
+    { src: '/lovable-uploads/475c78b4-0d64-4688-9607-1a6f5ba3f64b.png', alt: 'Detalhe da Cama' },
+    { src: '/lovable-uploads/6b4617ce-3faf-4142-b718-6f6fc30ffdeb.png', alt: 'Quarto Duplo com Duas Camas' },
+    { src: '/lovable-uploads/f4c5de6d-3284-40b8-a93a-d7b9fa367c8b.png', alt: 'Quarto com Mesa de Trabalho' },
+    { src: '/lovable-uploads/c14ca854-3883-4276-b9ef-6f3725200b90.png', alt: 'Quarto de Trabalho com Laptop' },
+    { src: '/lovable-uploads/0ccbcb83-cb79-42e1-b478-ff659205212e.png', alt: 'Toalhas no Quarto' },
+    { src: '/lovable-uploads/7dbd15f2-c7a8-4dff-a814-338660e5ad78.png', alt: 'Quarto Solteiro com Guarda-roupa' },
+    { src: '/lovable-uploads/3b97a7e5-2e0d-4b62-b696-141a0d95df35.png', alt: 'Amenidades do Banheiro' },
+    { src: '/lovable-uploads/ba5efb04-e283-4333-81be-804d1a6273d2.png', alt: 'Quarto Duplo com Mesa de Trabalho' }
   ];
 
   const ImageGrid = ({ images }: { images: { src: string; alt: string }[] }) => (
