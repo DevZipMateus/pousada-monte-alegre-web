@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
@@ -22,7 +21,11 @@ const Gallery = () => {
     { src: '/lovable-uploads/area-externa/area-externa-10.jpg', alt: 'Área Externa 10' },
     { src: '/lovable-uploads/area-externa/frente.jpg', alt: 'Frente da Pousada' },
     { src: '/lovable-uploads/area-externa/mesa-externa-01.jpg', alt: 'Mesa Externa' },
-    { src: '/lovable-uploads/area-externa/pousada.jpg', alt: 'Pousada' }
+    { src: '/lovable-uploads/area-externa/pousada.jpg', alt: 'Pousada' },
+    { src: '/lovable-uploads/58e1b315-a9f5-4165-8440-14af5b10e23c.png', alt: 'Vista Noturna da Pousada' },
+    { src: '/lovable-uploads/7d925a05-ae93-4235-a22c-6841d262dc37.png', alt: 'Placa Paraíso' },
+    { src: '/lovable-uploads/07f1fe8d-13a2-4365-a58e-fbba8a1b33e5.png', alt: 'Fachada da Pousada' },
+    { src: '/lovable-uploads/f477a638-a3e8-4b39-9eea-2ee76f6cc20b.png', alt: 'Área Externa com Árvores' }
   ];
 
   // Imagens da área interna
