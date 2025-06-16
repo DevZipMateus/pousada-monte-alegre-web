@@ -6,9 +6,19 @@ import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const navigate = useNavigate();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentBgIndex, setBgCurrentIndex] = useState(0);
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
   
-  // Todas as imagens da galeria combinadas
+  // Imagens para o fundo do hero
+  const heroBackgrounds = [
+    { src: '/lovable-uploads/area-externa/frente.jpg', alt: 'Frente da Pousada' },
+    { src: '/lovable-uploads/area-externa/pousada.jpg', alt: 'Pousada' },
+    { src: '/lovable-uploads/58e1b315-a9f5-4165-8440-14af5b10e23c.png', alt: 'Vista Noturna da Pousada' },
+    { src: '/lovable-uploads/07f1fe8d-13a2-4365-a58e-fbba8a1b33e5.png', alt: 'Fachada da Pousada' },
+    { src: '/lovable-uploads/area-externa/area-externa-02.jpg', alt: 'Área Externa' }
+  ];
+  
+  // Todas as imagens da galeria
   const allImages = [
     // Área Externa
     { src: '/lovable-uploads/area-externa/area-externa-02.jpg', alt: 'Área Externa 2' },
@@ -62,21 +72,30 @@ const Hero = () => {
     { src: '/lovable-uploads/ba5efb04-e283-4333-81be-804d1a6273d2.png', alt: 'Quarto Duplo com Mesa de Trabalho' }
   ];
 
-  // Troca automática a cada 4 segundos
+  // Troca automática do fundo a cada 5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex(prev => (prev + 1) % allImages.length);
+      setBgCurrentIndex(prev => (prev + 1) % heroBackgrounds.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [heroBackgrounds.length]);
+
+  // Troca automática da galeria a cada 4 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentGalleryIndex(prev => (prev + 1) % allImages.length);
     }, 4000);
 
     return () => clearInterval(interval);
   }, [allImages.length]);
 
-  const nextImage = () => {
-    setCurrentImageIndex(prev => (prev + 1) % allImages.length);
+  const nextGalleryImage = () => {
+    setCurrentGalleryIndex(prev => (prev + 1) % allImages.length);
   };
 
-  const prevImage = () => {
-    setCurrentImageIndex(prev => (prev - 1 + allImages.length) % allImages.length);
+  const prevGalleryImage = () => {
+    setCurrentGalleryIndex(prev => (prev - 1 + allImages.length) % allImages.length);
   };
 
   const handleImageClick = () => {
@@ -101,7 +120,7 @@ const Hero = () => {
     <section id="inicio" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
       {/* Background image carousel with optimization */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out" style={{
-        backgroundImage: `url(${allImages[currentImageIndex].src})`,
+        backgroundImage: `url(${heroBackgrounds[currentBgIndex].src})`,
         willChange: 'transform'
       }}></div>
       
@@ -185,8 +204,8 @@ const Hero = () => {
               onClick={handleImageClick}
             >
               <img
-                src={allImages[currentImageIndex].src}
-                alt={allImages[currentImageIndex].alt}
+                src={allImages[currentGalleryIndex].src}
+                alt={allImages[currentGalleryIndex].alt}
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -201,7 +220,7 @@ const Hero = () => {
 
             {/* Botões de navegação */}
             <button
-              onClick={prevImage}
+              onClick={prevGalleryImage}
               className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg transition-all duration-200 z-10"
               aria-label="Imagem anterior"
             >
@@ -209,7 +228,7 @@ const Hero = () => {
             </button>
 
             <button
-              onClick={nextImage}
+              onClick={nextGalleryImage}
               className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full p-2 md:p-3 shadow-lg transition-all duration-200 z-10"
               aria-label="Próxima imagem"
             >
@@ -221,9 +240,9 @@ const Hero = () => {
               {allImages.slice(0, 5).map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentImageIndex(index)}
+                  onClick={() => setCurrentGalleryIndex(index)}
                   className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-200 ${
-                    currentImageIndex % 5 === index 
+                    currentGalleryIndex % 5 === index 
                       ? 'bg-white' 
                       : 'bg-white/50 hover:bg-white/75'
                   }`}
@@ -236,7 +255,7 @@ const Hero = () => {
           {/* Informações da imagem */}
           <div className="text-center mt-4">
             <p className="text-white/80 text-sm mb-4 drop-shadow-md">
-              {allImages[currentImageIndex].alt} ({currentImageIndex + 1} de {allImages.length})
+              {allImages[currentGalleryIndex].alt} ({currentGalleryIndex + 1} de {allImages.length})
             </p>
             
             <Button 
