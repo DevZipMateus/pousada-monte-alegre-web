@@ -41,6 +41,13 @@ const Footer = () => {
                 (11) 99420-0991
               </a>
               <a 
+                href="tel:+5511992725522"
+                className="flex items-center text-gray-300 hover:text-primary transition-colors"
+              >
+                <Phone className="w-5 h-5 mr-3 text-primary" />
+                (11) 99272-5522
+              </a>
+              <a 
                 href="mailto:lcrochel@gmail.com"
                 className="flex items-center text-gray-300 hover:text-primary transition-colors"
               >

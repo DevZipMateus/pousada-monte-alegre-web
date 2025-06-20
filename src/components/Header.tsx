@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -34,6 +35,10 @@ const Header = () => {
             <a href="tel:+5511994200991" className="flex items-center gap-1 hover:text-primary-light transition-colors">
               <Phone className="w-4 h-4" />
               (11) 99420-0991
+            </a>
+            <a href="tel:+5511992725522" className="flex items-center gap-1 hover:text-primary-light transition-colors">
+              <Phone className="w-4 h-4" />
+              (11) 99272-5522
             </a>
             <a href="mailto:lcrochel@gmail.com" className="flex items-center gap-1 hover:text-primary-light transition-colors">
               <Mail className="w-4 h-4" />
